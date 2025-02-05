@@ -25,18 +25,18 @@ autoinstall:
 #          options:
 #            - encrypt=luks2 # Criptografa a partição raiz com LUKS2
 #            - luks_name=cryptroot # Define o nome da partição criptografada
-    packages:
-      - flatpak
+#    packages:
+#      - flatpak
 #    pre_command: 
 #      modprobe dm-crypt
 #      modprobe dm-thin-provisioning
 #      cryptsetup luksFormat /dev/sda --type luks2
 #      cryptsetup luksOpen /dev/sda cryptroot
 #      mkfs.ext4 /dev/mapper/cryptroot
-    late_command: 
-      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-      flatpak install flathub com.spotify.Client -y
-      flatpak install flathub com.brave.Browser -y
+#    late_command: 
+#      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#      flatpak install flathub com.spotify.Client -y
+#      flatpak install flathub com.brave.Browser -y
     updates: all
     shutdown: reboot
 
