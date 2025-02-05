@@ -9,10 +9,34 @@ autoinstall:
     locale: pt_BR.utf8
     keyboard:
         layout: br
-    timezone: "America/Recife"   
+    timezone: "America/Recife"
     codecs:
         install: true
     drivers:
         install: true
+#    storage:
+#        layout: gpt
+#        swap:
+#            size: 1G
+#        volumes:
+#          mount: /
+#          format: ext4
+#          size: 100%
+#          options:
+#            encrypt=luks2 # Criptografa a partição raiz com LUKS2
+#            luks_name=cryptroot # Define o nome da partição criptografada
+    packages:
+      - flatpak
+#    pre_command: 
+#      modprobe dm-crypt
+#      modprobe dm-thin-provisioning
+#      cryptsetup luksFormat /dev/sda --type luks2
+#      cryptsetup luksOpen /dev/sda cryptroot
+#      mkfs.ext4 /dev/mapper/cryptroot
+    late-commands:
+      - flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+      - flatpak install flathub com.spotify.Client -y
+      - flatpak install flathub com.brave.Browser -y
     updates: all
     shutdown: reboot
+
